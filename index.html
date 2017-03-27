@@ -4,20 +4,21 @@
 <head>
     <title>李永军(JeniusLi)个人网站-学生</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="唐岗,shinygang,tg">
-    <meta name="keywords" content="唐岗,shinygang,tg">
+    <meta name="description" content="李永军,jenius,tg">
+    <meta name="keywords" content="李永军,jenius,tg">
     <!--[if lte IE 8]><script src="index/css/ie/html5shiv.js"></script><![endif]-->
     <script src="index/js/skel.min.js"></script>
+    <script src="index/js/vue1.js"></script>
     <script src="index/js/init.js"></script><noscript><link rel="stylesheet" href="index/css/skel.css"><link rel="stylesheet" href="index/css/style.css"><link rel="stylesheet" href="index/css/style-wide.css"><link rel="stylesheet" href="index/css/style-noscript.css"></noscript>
     <!--[if lte IE 9]><link rel="stylesheet" href="index/css/ie/v9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="index/css/ie/v8.css" /><![endif]-->
 </head>
 
-<body class="loading">
+<body class="loading" id="app">
     <div id="wrapper">
-        <div id="bg"></div>
+        <div id="bg" style=""></div>
         <div id="overlay"></div>
-        <div id="main">
+        <div id="main" onclick="changeImage()">
             <header id="header">
                 <h1>李永军</h1>
                 <p>有两种方法能写出没有错误的程序；但只有第三种好用。</p>
@@ -35,5 +36,41 @@
         </div>
     </div>
 </body>
+<script>
+    var j = 0;
+
+    function changeImage() {
+        var img = ['bg.jpg', 'bg2.jpg','bg3.jpg','bg4.jpg','bg5.jpg'];
+        var colors = ['#348cb2','black','#2d4d66','black','black'];
+        var el = document.querySelector('#bg');
+        if (j == colors.length) {
+            j = 0;
+        }
+        el.setAttribute('style', 'background-image:url(index/css/images/' + img[j] + ');background-color:' + colors[j] + ' ;')
+        j++;
+        var a = document.getElementsByTagName('a');
+        for (var i = 0; i < a.length; i++) {
+            a[i].addEventListener('click', function(e) {　　　
+                e.stopPropagation();
+            }, false);
+        }
+        // for (var x in a) {
+        //
+        //     a[x].addEventListener('click', function(e) {　　　
+        //         e.stopPropagation();
+        //     }, false);
+        // }
+
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '123'
+        },
+        methods: {
+
+        }
+    })
+</script>
 
 </html>
